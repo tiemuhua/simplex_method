@@ -1,0 +1,1 @@
+/usr/bin/c++      CMakeFiles/exe.dir/main.cpp.o  -o exe -rdynamic libsimplex_method.so -Wl,-rpath,/home/zhuchen/simplexMethod/build 

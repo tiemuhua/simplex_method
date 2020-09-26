@@ -1,0 +1,4 @@
+/home/zhuchen/simplexMethod/build/CMakeFiles/edit_cache.dir
+/home/zhuchen/simplexMethod/build/CMakeFiles/rebuild_cache.dir
+/home/zhuchen/simplexMethod/build/CMakeFiles/exe.dir
+/home/zhuchen/simplexMethod/build/CMakeFiles/simplex_method.dir

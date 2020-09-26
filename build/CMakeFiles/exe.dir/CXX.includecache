@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/zhuchen/simplexMethod/main.cpp
+bits/stdc++.h
+-
+Eigen/Core
+-
+simplex_method.h
+/home/zhuchen/simplexMethod/simplex_method.h
+
+/home/zhuchen/simplexMethod/simplex_method.h
+bits/stdc++.h
+-
+Eigen/Core
+-
+
