@@ -52,4 +52,5 @@ int main() {
         cout << "no ans" << endl;
     }
     cout << "min val:\t" << min_val << endl;
+    cout<<ans_vec.transpose()<<endl;
 }

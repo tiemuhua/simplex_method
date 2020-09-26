@@ -8,6 +8,14 @@ SimplexMethod::SolveResults SimplexMethod::solve(
     if(result != SUCCESS) return result;
     solveMainProblem();
     min_val=z0_;
+    VectorXd ans=VectorXd::Zero((var_num_)<<1+ineq_num_);
+    ori_var.resize(var_num_);
+    for(int i=0;i<row_num_;++i){
+        ans(row2var_(i))=b_(i);
+    }
+    for(int i=0;i<var_num_;++i){
+        ori_var(i)=ans(i<<1)-ans((i<<1)+1);
+    }
     return SUCCESS;
 }
 
@@ -40,6 +48,9 @@ void SimplexMethod::init(
     A_.block(0,var_num_<<1,row_num_,row_num_)=MatrixXd::Identity(row_num_,row_num_);
 
     row2var_=VectorXd::Zero(row_num_);
+    for(int i=0;i<row_num_;++i){
+        row2var_(i)=i+(var_num_<<1);
+    }
 }
 
 SimplexMethod::SolveResults SimplexMethod::solveAssistProblem() {
@@ -54,9 +65,6 @@ SimplexMethod::SolveResults SimplexMethod::solveAssistProblem() {
         min_val+=b_(i);
     }
 
-    for(int i=0;i<row_num_;++i){
-        row2var_(i)=i+(var_num_<<1);
-    }
     int in = maxId(g);
 
     while(g(in) > 0) {
@@ -142,7 +150,6 @@ SimplexMethod::SolveResults SimplexMethod::solveAssistProblem() {
 
 void SimplexMethod::solveMainProblem() {
     int in = maxId(c_);
-    cout<<"in:\t"<<in<<"c_.size"<<c_.size()<<endl;
     while(c_(in) > 0){
         int row = 0;
         double min_b_frac_A = inf;
@@ -165,8 +172,6 @@ void SimplexMethod::solveMainProblem() {
 
         z0_ -= c_(in) * b_(row);
         c_ -= c_(in) * A_.row(row).transpose();
-        cout<<c_.transpose()<<"\n\n";
-        cout << z0_ << endl;
         in = maxId(c_);
     }
 }
